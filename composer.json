@@ -10,5 +10,19 @@
             "email": "juan@heymowski.es"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.1.0",
+    },
+    "autoload": {
+        "psr-4": {
+            "Heymowski\\LatestNewsReader\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Heymowski\\LatestNewsReader\\LatestNewsReaderServiceProvider"
+            ]
+        }
+    },
 }
