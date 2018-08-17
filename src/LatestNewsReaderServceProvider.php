@@ -11,6 +11,12 @@ class LatestNewsReaderServceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*
+    	 *
+    	 * Load Migrations
+    	 *
+    	 */
+        $this->loadMigrationsFrom(__DIR__.'/migrations');
     }
 
     /**
