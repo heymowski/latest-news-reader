@@ -1,0 +1,14 @@
+{
+    "name": "heymowski/latest-news-reader",
+    "description": "Latest News Reader (Simple Pie Based)",
+    "homepage": "https://github.com/heymowski/latest-news-reader",
+    "type": "Laravel-Package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Juan José Juan Heymowski",
+            "email": "juan@heymowski.es"
+        }
+    ],
+    "require": {}
+}
