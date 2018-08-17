@@ -4,7 +4,7 @@ namespace Heymowski\LatestNewsReader;
 
 use Illuminate\Support\ServiceProvider;
 
-class LatestNewsReaderServceProvider extends ServiceProvider
+class LatestNewsReaderServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
