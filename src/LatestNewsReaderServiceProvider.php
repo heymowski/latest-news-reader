@@ -16,7 +16,7 @@ class LatestNewsReaderServiceProvider extends ServiceProvider
     	 * Load Migrations
     	 *
     	 */
-        $this->loadMigrationsFrom(__DIR__.'/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/Migrations');
     }
 
     /**
