@@ -2,17 +2,25 @@
 
 namespace Heymowski\LatestNewsReader;
 
-use Heymowski\LatestNewsReader\Lib\SimplePie;
-use Heymowski\LatestNewsReader\Lib\SimplePie_Misc;
+use SimplePie;
 
 class Reader
 {
     public function init()
     {
-        $SimplePie_Misc = new SimplePie_Misc();
-        $url = 'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml';
-        $feed = new SimplePie();
-        $feed->set_feed_url($url);
-        // $feed->init();
+        $reader = new SimplePie();
+
+        // $url = 'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml';
+        $url = 'http://ep00.epimg.net/rss/elpais/portada.xml';
+
+        $reader->set_feed_url($url);
+
+        $reader->enable_cache(false);
+
+        $reader->init();
+
+        $reader->handle_content_type();
+
+        return $reader->get_items();
     }
 }
