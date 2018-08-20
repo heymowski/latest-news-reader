@@ -6,21 +6,36 @@ use SimplePie;
 
 class Reader
 {
-    public function init()
+    public function checkUrl($url)
     {
-        $reader = new SimplePie();
+        $feed = $this->loadUrl($url);
 
-        // $url = 'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml';
-        $url = 'http://ep00.epimg.net/rss/elpais/portada.xml';
+        if ($feed->error()) {
+            return false;
+        }
 
-        $reader->set_feed_url($url);
+        return true;
+    }
 
-        $reader->enable_cache(false);
+    public function read($url)
+    {
+        $feed = $this->loadUrl($url);
 
-        $reader->init();
+        return $feed;
+    }
 
-        $reader->handle_content_type();
+    protected function loadUrl($url)
+    {
+        $feed = new SimplePie();
 
-        return $reader->get_items();
+        $feed->set_feed_url($url);
+
+        $feed->enable_cache(false);
+
+        $feed->init();
+
+        $feed->handle_content_type();
+
+        return $feed;
     }
 }
