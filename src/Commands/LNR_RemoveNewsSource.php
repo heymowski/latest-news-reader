@@ -11,14 +11,14 @@ class LNR_RemoveNewsSource extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'LNR:RemoveNewsSource';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Last News Reader - Remove News Source';
 
     /**
      * Create a new command instance.

@@ -3,6 +3,7 @@
 namespace Heymowski\LatestNewsReader\Commands;
 
 use Illuminate\Console\Command;
+use Heymowski\LatestNewsReader\Models\NewsSource;
 
 class LNR_EditNewsSource extends Command
 {
@@ -11,14 +12,14 @@ class LNR_EditNewsSource extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'LNR:EditNewsSource';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Last News Reader - Edit News Source';
 
     /**
      * Create a new command instance.
@@ -35,5 +36,26 @@ class LNR_EditNewsSource extends Command
      */
     public function handle()
     {
+        // Hello
+        $this->info('Hello, do you want to edit a source?');
+
+        $this->info('these are the available sources:');
+
+        $headers = ['ID', 'Name', 'Slug', 'Url'];
+
+        $newsSources = NewsSource::all(['id', 'name', 'slug', 'url'])->toArray();
+
+        $this->table($headers, $newsSources);
+
+        $newsSourceIdToEdit = $this->ask('Insert the id of the source you want to edit');
+
+        $newsSourceToEdit = NewsSource::find($newsSourceIdToEdit);
+
+        if ($this->confirm('('.$newsSourceToEdit->name.') Is this the source you want to edit?')) {
+            $this->info('OK');
+            exit;
+        }
+
+        $this->info('KO');
     }
 }

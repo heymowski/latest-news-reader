@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 //Commands
 use Heymowski\LatestNewsReader\Commands\LNR_AddNewsSource;
+use Heymowski\LatestNewsReader\Commands\LNR_EditNewsSource;
+use Heymowski\LatestNewsReader\Commands\LNR_RemoveNewsSource;
 
 class LatestNewsReaderServiceProvider extends ServiceProvider
 {
@@ -30,7 +32,8 @@ class LatestNewsReaderServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 LNR_AddNewsSource::class,
-                //BarCommand::class,
+                LNR_EditNewsSource::class,
+                LNR_RemoveNewsSource::class,
             ]);
         }
     }
