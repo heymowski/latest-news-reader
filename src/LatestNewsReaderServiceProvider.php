@@ -5,9 +5,14 @@ namespace Heymowski\LatestNewsReader;
 use Illuminate\Support\ServiceProvider;
 
 //Commands
-use Heymowski\LatestNewsReader\Commands\LNR_AddNewsSource;
-use Heymowski\LatestNewsReader\Commands\LNR_EditNewsSource;
-use Heymowski\LatestNewsReader\Commands\LNR_RemoveNewsSource;
+
+//Sources
+use Heymowski\LatestNewsReader\Commands\Sources\LNR_AddNewsSource;
+use Heymowski\LatestNewsReader\Commands\Sources\LNR_EditNewsSource;
+use Heymowski\LatestNewsReader\Commands\Sources\LNR_GetNewsSource;
+use Heymowski\LatestNewsReader\Commands\Sources\LNR_RemoveNewsSource;
+// Items
+use Heymowski\LatestNewsReader\Commands\Items\LNR_ReadAll;
 
 class LatestNewsReaderServiceProvider extends ServiceProvider
 {
@@ -31,9 +36,15 @@ class LatestNewsReaderServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
+
+                // Sources
                 LNR_AddNewsSource::class,
                 LNR_EditNewsSource::class,
+                LNR_GetNewsSource::class,
                 LNR_RemoveNewsSource::class,
+
+                // Items
+                LNR_ReadAll::class,
             ]);
         }
     }

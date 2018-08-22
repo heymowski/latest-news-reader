@@ -1,6 +1,6 @@
 <?php
 
-namespace Heymowski\LatestNewsReader\Commands;
+namespace Heymowski\LatestNewsReader\Commands\Sources;
 
 use Exception;
 use Illuminate\Console\Command;
@@ -14,7 +14,7 @@ class LNR_EditNewsSource extends Command
      *
      * @var string
      */
-    protected $signature = 'LNR:EditNewsSource';
+    protected $signature = 'LNR-Sources:EditNewsSource';
 
     /**
      * The console command description.
@@ -101,6 +101,7 @@ class LNR_EditNewsSource extends Command
 
             $this->info('-----------------------------');
             $this->info('No changes have been made, bye.');
+            exit;
         } catch (Exception $e) {
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Heymowski\LatestNewsReader\Commands;
+namespace Heymowski\LatestNewsReader\Commands\Sources;
 
 use Exception;
 use Illuminate\Console\Command;
@@ -13,7 +13,7 @@ class LNR_RemoveNewsSource extends Command
      *
      * @var string
      */
-    protected $signature = 'LNR:RemoveNewsSource';
+    protected $signature = 'LNR-Sources:RemoveNewsSource';
 
     /**
      * The console command description.

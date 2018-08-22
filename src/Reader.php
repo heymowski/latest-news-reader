@@ -6,6 +6,9 @@ use SimplePie;
 
 class Reader
 {
+    /**
+     * Check if url is correct.
+     */
     public function checkUrl($url)
     {
         $feed = $this->loadUrl($url);
@@ -17,6 +20,9 @@ class Reader
         return true;
     }
 
+    /**
+     * Read fedd url.
+     */
     public function read($url)
     {
         $feed = $this->loadUrl($url);
@@ -24,6 +30,9 @@ class Reader
         return $feed;
     }
 
+    /**
+     * Load url and read the feed.
+     */
     protected function loadUrl($url)
     {
         $feed = new SimplePie();

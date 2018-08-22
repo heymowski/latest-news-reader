@@ -1,6 +1,6 @@
 <?php
 
-namespace Heymowski\LatestNewsReader\Commands;
+namespace Heymowski\LatestNewsReader\Commands\Sources;
 
 use Illuminate\Console\Command;
 use Heymowski\LatestNewsReader\Reader;
@@ -13,7 +13,7 @@ class LNR_AddNewsSource extends Command
      *
      * @var string
      */
-    protected $signature = 'LNR:AddNewsSource';
+    protected $signature = 'LNR-Sources:AddNewsSource';
 
     /**
      * The console command description.
@@ -84,8 +84,10 @@ class LNR_AddNewsSource extends Command
         $this->info('Current News Sources:');
         $this->info('----------------------------------');
 
-        foreach (NewsSource::all() as $newsSource) {
-            $this->info($newsSource->name.' - '.$newsSource->url);
-        }
+        $headers = ['ID', 'Name', 'Slug', 'Url'];
+
+        $newsSources = NewsSource::all(['id', 'name', 'slug', 'url'])->toArray();
+
+        $this->table($headers, $newsSources);
     }
 }
