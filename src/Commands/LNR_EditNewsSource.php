@@ -4,6 +4,7 @@ namespace Heymowski\LatestNewsReader\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
+use Heymowski\LatestNewsReader\Reader;
 use Heymowski\LatestNewsReader\Models\NewsSource;
 
 class LNR_EditNewsSource extends Command
@@ -68,6 +69,25 @@ class LNR_EditNewsSource extends Command
                 // Change Url?
                 if ($this->confirm('Do you wish to change the url?')) {
                     $newsSourceToEdit->url = $this->ask('Insert new Url');
+
+                    // Create new Reader
+                    $reader = new Reader();
+
+                    // Check if Url is in database
+                    if (NewsSource::where('url', $newsSourceToEdit->url)->first()) {
+                        $this->info('Sorry, url is already in database.');
+                        exit();
+                    }
+
+                    // Check If url is correct
+                    while ($reader->checkUrl($newsSourceToEdit->url) == false) {
+                        $this->info("I'm sorry, bad url, try again");
+                        // Insert the url for the new Source
+                        $newsSourceToEdit->url = $this->ask('Please, insert the url for the new Source, or press Ctrl+c to cancel');
+                    }
+
+                    // If URL Is correct
+                    $this->info('Perfect, the url is correct.');
                 }
 
                 // Save Changes

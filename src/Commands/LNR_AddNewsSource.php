@@ -46,6 +46,12 @@ class LNR_AddNewsSource extends Command
         // Create new Reader
         $reader = new Reader();
 
+        // Check if Url is in database
+        if (NewsSource::where('url', $sourceUrl)->first()) {
+            $this->info('Sorry, url is already in database.');
+            exit();
+        }
+
         // Check If url is correct
         while ($reader->checkUrl($sourceUrl) == false) {
             $this->info("I'm sorry, bad url, try again");
@@ -55,12 +61,6 @@ class LNR_AddNewsSource extends Command
 
         // If URL Is correct
         $this->info('Perfect, the url is correct.');
-
-        // Check if Url is in database
-        if (NewsSource::where('url', $sourceUrl)) {
-            $this->info('Sorry, url is already in database.');
-            exit();
-        }
 
         // Insert the Name for the new Source
         $sourceName = $this->ask('now add a name for the new source');
