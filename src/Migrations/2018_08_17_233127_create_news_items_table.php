@@ -22,27 +22,27 @@ class CreateNewsItemsTable extends Migration
 
             $table->text('content');
 
-            $table->string('category');
+            $table->string('category')->nullable();
 
-            $table->string('categories');
+            $table->text('categories')->nullable();
 
-            $table->string('author');
+            $table->string('author')->nullable();
 
-            $table->string('contributor');
+            $table->text('authors')->nullable();
 
-            $table->string('contributors');
+            $table->string('contributor')->nullable();
 
-            $table->string('authors');
+            $table->text('contributors')->nullable();
 
-            $table->string('copyright');
+            $table->string('copyright')->nullable();
 
-            $table->string('date');
+            $table->dateTime('date');
 
-            $table->string('updated_date');
+            $table->dateTime('updated_date');
 
             $table->string('link');
 
-            $table->string('source');
+            $table->string('source')->nullable();
 
             $table->timestamps();
 
