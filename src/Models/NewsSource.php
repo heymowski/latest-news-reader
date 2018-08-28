@@ -10,4 +10,12 @@ class NewsSource extends Model
     use SoftDeletes;
 
     protected $fillable = ['id', 'name', 'slug', 'url'];
+
+    /**
+     * Get News Items.
+     */
+    public function newsItems()
+    {
+        return $this->hasMany('Heymowski\LatestNewsReader\Models\NewsItem');
+    }
 }
