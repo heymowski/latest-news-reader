@@ -57,6 +57,12 @@ class Reader
     public function processFeedItems(NewsSource $newsSource)
     {
         $feed = $this->loadUrl($newsSource->url);
+        
+        if ($feed->error()) {
+            $newsSource->status = 0;
+            $newsSource->save();
+            return null;
+        }
 
         $items = $feed->get_items();
 
@@ -119,6 +125,21 @@ class Reader
     }
 
     /**
+     * getLogoUrl
+     */
+    public function getLogoUrl($url)
+    {
+        $feed = $this->loadUrl($url);
+
+        if ($feed->get_image_url() != null) {
+        	return $feed->get_image_url();
+        }
+
+        return null;
+    }
+    
+
+    /**
      * Check If Item is not in DB.
      */
     protected function checkIfItemIsNotInDB($title, $date, $newsSourceId)
@@ -136,7 +157,7 @@ class Reader
     }
 
     /**
-     * Check that data is ot null.
+     * Check that data is not null.
      */
     protected function checkNotNullData($data)
     {

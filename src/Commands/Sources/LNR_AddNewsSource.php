@@ -62,6 +62,9 @@ class LNR_AddNewsSource extends Command
         // If URL Is correct
         $this->info('Perfect, the url is correct.');
 
+        // GEt The Logo for the Feed
+        $logo_url = $reader->getLogoUrl($sourceUrl);
+
         // Insert the Name for the new Source
         $sourceName = $this->ask('now add a name for the new source');
 
@@ -73,6 +76,7 @@ class LNR_AddNewsSource extends Command
             'name' => $sourceName,
             'slug' => $sourceSlug,
             'url' => $sourceUrl,
+            'logo_url' => $logo_url,
         ]);
 
         $newNewsSource->save();
@@ -84,9 +88,9 @@ class LNR_AddNewsSource extends Command
         $this->info('Current News Sources:');
         $this->info('----------------------------------');
 
-        $headers = ['ID', 'Name', 'Slug', 'Url'];
+        $headers = ['ID', 'Name', 'Slug', 'Url', 'Logo', 'Status'];
 
-        $newsSources = NewsSource::all(['id', 'name', 'slug', 'url'])->toArray();
+        $newsSources = NewsSource::all(['id', 'name', 'slug', 'url', 'logo_url', 'status'])->toArray();
 
         $this->table($headers, $newsSources);
     }

@@ -20,6 +20,10 @@ class CreateNewsSourcesTable extends Migration
 
             $table->string('url');
 
+            $table->string('logo_url')->nullable();
+
+            $table->tinyInteger('status')->default(1);
+
             $table->timestamps();
 
             $table->softDeletes();

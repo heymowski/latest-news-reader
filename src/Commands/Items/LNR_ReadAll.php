@@ -37,7 +37,7 @@ class LNR_ReadAll extends Command
      */
     public function handle()
     {
-        $newsSources = NewsSource::all();
+        $newsSources = NewsSource::where('status', 1)->get();
 
         // Create new Reader
         $reader = new Reader();
