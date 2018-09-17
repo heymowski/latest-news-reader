@@ -14,6 +14,8 @@ class CreateNewsSourcesTable extends Migration
         Schema::create('news_sources', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->integer('user_id')->nullable()->default(null);
+
             $table->string('name');
 
             $table->string('slug');

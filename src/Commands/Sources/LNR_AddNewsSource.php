@@ -88,9 +88,9 @@ class LNR_AddNewsSource extends Command
         $this->info('Current News Sources:');
         $this->info('----------------------------------');
 
-        $headers = ['ID', 'Name', 'Slug', 'Url', 'Logo', 'Status'];
+        $headers = ['ID', 'User ID', 'Name', 'Slug', 'Url', 'Logo', 'Status'];
 
-        $newsSources = NewsSource::all(['id', 'name', 'slug', 'url', 'logo_url', 'status'])->toArray();
+        $newsSources = NewsSource::all(['id', 'user_id', 'name', 'slug', 'url', 'logo_url', 'status'])->toArray();
 
         $this->table($headers, $newsSources);
     }

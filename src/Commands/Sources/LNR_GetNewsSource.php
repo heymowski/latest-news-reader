@@ -37,13 +37,13 @@ class LNR_GetNewsSource extends Command
      */
     public function handle()
     {
+        $newsSources = NewsSource::all(['id', 'user_id', 'name', 'slug', 'url', 'logo_url', 'status'])->toArray();
+
         $this->info('----------------------------------');
-        $this->info('Current News Sources:');
+        $this->info('Current News Sources:'.sizeof($newsSources));
         $this->info('----------------------------------');
 
-        $headers = ['ID', 'Name', 'Slug', 'Url'];
-
-        $newsSources = NewsSource::all(['id', 'name', 'slug', 'url'])->toArray();
+        $headers = ['ID', 'User ID', 'Name', 'Slug', 'Url', 'Logo', 'Status'];
 
         $this->table($headers, $newsSources);
     }

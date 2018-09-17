@@ -118,9 +118,9 @@ class LNR_EditNewsSource extends Command
 
         $this->info($title);
 
-        $headers = ['ID', 'Name', 'Slug', 'Url'];
+        $headers = ['ID', 'User ID', 'Name', 'Slug', 'Url', 'Logo', 'Status'];
 
-        $newsSources = NewsSource::all(['id', 'name', 'slug', 'url'])->toArray();
+        $newsSources = NewsSource::all(['id', 'user_id', 'name', 'slug', 'url', 'logo_url', 'status'])->toArray();
 
         $this->table($headers, $newsSources);
     }

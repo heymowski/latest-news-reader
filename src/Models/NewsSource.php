@@ -9,7 +9,7 @@ class NewsSource extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['id', 'name', 'slug', 'url', 'logo_url'];
+    protected $fillable = ['id', 'user_id', 'name', 'slug', 'url', 'logo_url', 'status'];
 
     /**
      * Get News Items.
