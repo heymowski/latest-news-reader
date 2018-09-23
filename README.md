@@ -11,12 +11,12 @@ Latest News Reader (Simple Pie Based) Laravel Package
 
 2 - Migrate DB
 
-	Artisan Migrate
+	artisan Migrate
 
 3 - Add News Source
 
-	Artisan LNR-Sources:AddNewsSource
+	artisan LNR-Sources:AddNewsSource
 
 4 - Load Feeds to db
 
-	Artisan LNR-Items:ReadAll
+	artisan LNR-Items:ReadAll
