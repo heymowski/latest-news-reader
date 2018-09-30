@@ -11,7 +11,7 @@ Latest News Reader (Simple Pie Based) Laravel Package
 
 2 - Migrate DB
 
-	artisan Migrate
+	artisan migrate
 
 3 - Add News Source
 
