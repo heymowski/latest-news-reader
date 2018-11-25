@@ -45,5 +45,7 @@ class LNR_ReadAll extends Command
         foreach ($newsSources as $newsSource) {
             $reader->processFeedItems($newsSource);
         }
+
+        $this->info('Done');
     }
 }

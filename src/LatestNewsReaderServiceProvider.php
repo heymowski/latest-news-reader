@@ -5,7 +5,7 @@ namespace Heymowski\LatestNewsReader;
 use Illuminate\Support\ServiceProvider;
 
 //Commands
-
+use Heymowski\LatestNewsReader\Commands\LNR_Console;
 //Sources
 use Heymowski\LatestNewsReader\Commands\Sources\LNR_AddNewsSource;
 use Heymowski\LatestNewsReader\Commands\Sources\LNR_EditNewsSource;
@@ -36,7 +36,8 @@ class LatestNewsReaderServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-
+            	// Console
+            	LNR_Console::class,
                 // Sources
                 LNR_AddNewsSource::class,
                 LNR_EditNewsSource::class,
