@@ -67,10 +67,19 @@ class Reader
         $items = $feed->get_items();
 
         foreach ($items as $item) {
-            $title = $item->get_title();
+
+        	$title = $item->get_title();
             $description = $item->get_description();
             $content = $item->get_content();
             $category = $item->get_category();
+
+            $image_url = $this->getImage($item);
+
+            if($image_url === null)
+            {
+            	$image_url = $newsSource->logo_url;
+            }
+            
 
             $categories = '';
             if ($item->get_categories() != null) {
@@ -106,6 +115,7 @@ class Reader
                     'title' => $this->checkNotNullData($title),
                     'description' => $this->checkNotNullData($description),
                     'content' => $this->checkNotNullData($content),
+                    'image_url' => $image_url,
                     'category' => $this->checkNotNullData($category),
                     'categories' => $this->checkNotNullData($categories),
                     'author' => $this->checkNotNullData($author),
@@ -124,6 +134,35 @@ class Reader
         }
     }
 
+    /**
+     *
+     * Block comment
+     *
+     */
+    public function getImage($item)
+	{
+		$image = $item->get_enclosure();
+
+        if($image)
+        {
+        	return $image->link;
+        
+        }else{
+
+        	$search = '/(https?:\/\/.*\.(?:png|jpg))/i';
+		
+			$match = preg_match($search, $item->get_content(), $matches);
+			
+			if ($match === 1) {
+			
+				return $matches[0];
+			
+			}
+
+			return null;
+        }
+	}
+    
     /**
      * getLogoUrl
      */

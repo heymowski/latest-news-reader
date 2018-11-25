@@ -22,6 +22,8 @@ class CreateNewsItemsTable extends Migration
 
             $table->text('content');
 
+            $table->string('image_url')->nullable();
+
             $table->string('category')->nullable();
 
             $table->text('categories')->nullable();
