@@ -18,4 +18,13 @@ class NewsSource extends Model
     {
         return $this->hasMany('Heymowski\LatestNewsReader\Models\NewsItem');
     }
+
+    /**
+     * The Users that subscribed to this NewsSource
+     */
+    public function users()
+    {
+    	// model, table, local_model_key, remote_model_key 
+        return $this->belongsToMany('App\User', 'news_source_users', 'news_source_id', 'user_id')->withTimestamps();
+    }
 }
