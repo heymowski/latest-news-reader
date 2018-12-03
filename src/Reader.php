@@ -87,8 +87,11 @@ class Reader
                     $categories .= $cat->term.', ';
                 }
             }
-
-            $author = $item->get_author()->name;
+            $author =  '';
+			if ($item->get_author() != null) {
+            	$author = $item->get_author()->name;    
+            }
+	        
             $contributor = $item->get_contributor();
 
             $contributors = '';
